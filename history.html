@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container py-4">
+      <h3>Summary History</h3>
+      <a href="/" class="btn btn-link">Back</a>
+      <table class="table mt-3">
+        <thead><tr><th>When</th><th>Video</th><th>Style</th><th>Summary</th></tr></thead>
+        <tbody>
+          {% for r in rows %}
+            <tr>
+              <td>{{ r['created_at'] }}</td>
+              <td><a target="_blank" href="https://www.youtube.com/watch?v={{ r['video_id'] }}">{{ r['title'] or r['video_id'] }}</a></td>
+              <td>{{ r['style'] }}</td>
+              <td><pre style="max-width:420px">{{ r['summary'] }}</pre></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
